@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using LoremSharp;
 
 namespace Examples
@@ -8,9 +7,34 @@ namespace Examples
     {
         static void Main(string[] args)
         {
+            Generate();
+        }
+
+        static void ReGenQuestion()
+        {
+            Console.WriteLine("Generate new? Y/N");
+            var key = Console.ReadLine();
+
+            if (key == "Y".ToLowerInvariant())
+                Generate();
+            else
+                Environment.Exit(Environment.ExitCode);
+        }
+
+        static void Generate()
+        {
+            GenLorem();
+            ReGenQuestion();
+        }
+
+        static void GenLorem()
+        {
             Console.WriteLine($"Email: {Lorem.Email()}");
             Console.WriteLine($"Chance: {Lorem.Chance(1, 2)}");
             Console.WriteLine($"Words: {Lorem.Words(5)}");
+            Console.WriteLine($"Sentence: {Lorem.Sentence(5, 25)}");
+            Console.WriteLine("Change to De Finibus Bonorum");
+            Source.Update(true);
             Console.WriteLine($"Sentence: {Lorem.Sentence(5, 25)}{Environment.NewLine}");
 
             Console.WriteLine("Change the source...");
@@ -18,9 +42,6 @@ namespace Examples
 
             Console.WriteLine($"New sentence: {Lorem.Sentence(5, 25)}{Environment.NewLine}");
             Console.WriteLine("Press any key to exit...");
-
-            if (!Debugger.IsAttached)
-                Console.ReadKey();
         }
     }
 }
