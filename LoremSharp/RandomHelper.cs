@@ -8,10 +8,9 @@ namespace LoremSharp
      */
     internal static class RandomHelper
     {
-        private static int seedCounter = new Random().Next();
+        static int seedCounter = new Random().Next();
 
-        [ThreadStatic]
-        private static Random rng;
+        [ThreadStatic] static Random rng;
 
         internal static Random Instance
         {

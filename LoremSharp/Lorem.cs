@@ -4,7 +4,9 @@ using System.Linq;
 
 namespace LoremSharp
 {
-    public static class LoremGen
+    [Obsolete("The Generate class is obsolete. Please use the Lorem class.")]
+    public class Generator : Lorem { }
+    public class Lorem
     {
         public static bool Chance(int successes, int attempts)
         {
