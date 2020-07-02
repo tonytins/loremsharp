@@ -1,6 +1,6 @@
 # LoremSharp
 
-A fork of Lorem.NET with some changes to the API. It targets both .NET Standard and .NET Framework 4.0.
+A fork of Lorem.NET with some changes to the API. It targets both .NET Standard 2.0 and .NET Framework 4.0.
 
 
 ## Usage
