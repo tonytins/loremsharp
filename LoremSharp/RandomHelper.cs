@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace LoremNET
+namespace LoremSharp
 {
     /*
      * http://stackoverflow.com/a/1785821/234132
@@ -19,7 +19,7 @@ namespace LoremNET
             {
                 if (rng == null)
                 {
-                    int seed = Interlocked.Increment(ref seedCounter);
+                    var seed = Interlocked.Increment(ref seedCounter);
                     rng = new Random(seed);
                 }
                 return rng;

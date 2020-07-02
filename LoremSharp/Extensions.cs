@@ -1,6 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 
-namespace LoremNET
+namespace LoremSharp
 {
     internal static class Extensions
     {
@@ -9,7 +10,7 @@ namespace LoremNET
             return s.Replace(pattern, "");
         }
 
-        internal static string[] Split(this string s, string separator)
+        internal static IEnumerable<string> Split(this string s, string separator)
         {
             return s.Split(new[] { separator }, StringSplitOptions.None);
         }

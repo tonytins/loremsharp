@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace LoremNET
+namespace LoremSharp
 {
     public static class Source
     {
@@ -9,7 +9,8 @@ namespace LoremNET
 
         internal static IEnumerable<string> Rearrange(string words)
         {
-            return words.Split(" ").OrderBy(x => RandomHelper.Instance.Next());
+            return words.Split(" ")
+                .OrderBy(x => RandomHelper.Instance.Next());
         }
 
         internal static IEnumerable<string> WordList(bool includePuncation)

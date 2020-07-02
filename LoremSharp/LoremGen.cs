@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace LoremNET
+namespace LoremSharp
 {
-    public static class Generate
+    public static class LoremGen
     {
         public static bool Chance(int successes, int attempts)
         {
@@ -36,9 +36,9 @@ namespace LoremNET
         /* http://stackoverflow.com/a/6651661/234132 */
         public static long Number(long min, long max)
         {
-            byte[] buf = new byte[8];
+            var buf = new byte[8];
             RandomHelper.Instance.NextBytes(buf);
-            long longRand = BitConverter.ToInt64(buf, 0);
+            var longRand = BitConverter.ToInt64(buf, 0);
 
             return (Math.Abs(longRand % ((max + 1) - min)) + min);
         }
@@ -47,7 +47,7 @@ namespace LoremNET
 
         public static DateTime DateTime(int startYear = 1950, int startMonth = 1, int startDay = 1)
         {
-            return DateTime(new System.DateTime(startYear, startMonth, startDay), System.DateTime.Now);
+            return DateTime(new DateTime(startYear, startMonth, startDay), System.DateTime.Now);
         }
 
         public static DateTime DateTime(DateTime min)
@@ -58,8 +58,8 @@ namespace LoremNET
         /* http://stackoverflow.com/a/1483677/234132 */
         public static DateTime DateTime(DateTime min, DateTime max)
         {
-            TimeSpan timeSpan = max - min;
-            TimeSpan newSpan = new TimeSpan(0, RandomHelper.Instance.Next(0, (int)timeSpan.TotalMinutes), 0);
+            var timeSpan = max - min;
+            var newSpan = new TimeSpan(0, RandomHelper.Instance.Next(0, (int)timeSpan.TotalMinutes), 0);
 
             return min + newSpan;
         }
@@ -70,7 +70,7 @@ namespace LoremNET
 
         public static string Email()
         {
-            return string.Format("{0}@{1}.com", Generate.Words(1, false), Generate.Words(1, false));
+            return string.Format("{0}@{1}.com", Words(1, false), Words(1, false));
         }
 
         public static string Words(int wordCount, bool uppercaseFirstLetter = true, bool includePunctuation = false)
@@ -145,9 +145,9 @@ namespace LoremNET
         /* http://stackoverflow.com/a/1054087/234132 */
         public static string HexNumber(int digits)
         {
-            byte[] buffer = new byte[digits / 2];
+            var buffer = new byte[digits / 2];
             RandomHelper.Instance.NextBytes(buffer);
-            string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
+            var result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
 
             if (digits % 2 == 0)
             {
